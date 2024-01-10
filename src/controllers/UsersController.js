@@ -6,6 +6,8 @@ class UsersController {
   async create(request, response) {
     const { name, email, password } = request.body;
 
+    console.log(name, email, password);
+
     if (!name || !email || !password) {
       throw new AppError("Informe todos os campos (nome, email e senha).");
     }
@@ -66,6 +68,12 @@ class UsersController {
 
     return response.json();
   }
+
+  async getAll(request, response) {
+    const users = await knex("users");
+
+    return response.json(users);
+  } 
 }
 
 module.exports = UsersController;

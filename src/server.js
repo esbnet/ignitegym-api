@@ -19,7 +19,6 @@ app.use("/exercise/demo", express.static(demoExercisePath));
 const thumbExercisesPath = path.resolve(__dirname, "..", "exercises", "thumb")
 app.use("/exercise/thumb", express.static(thumbExercisesPath));
 
-
 const routes = require("./routes");
 
 app.use(express.json());
@@ -36,8 +35,6 @@ app.use((err, request, response, next) => {
       message: err.message,
     });
   }
-
-  console.error(err);
 
   return response.status(500).json({
     status: "error",
